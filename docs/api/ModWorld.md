@@ -360,6 +360,46 @@ Quaternion GetQuaternion(string key, Quaternion fallback = default(Quaternion))
 Color GetColor(string key, Color fallback = default(Color))
 ```
 
+<a name="worlditem-setmaterial"></a>
+
+#### SetMaterial
+
+```csharp
+void SetMaterial(string slot, string materialId)
+```
+
+Shows a material on this item's parts whose model material is called `slot` ("\*" for every part), for everyone, and saves it. Use full ids, e.g. "game:cobble" or what [`ModMaterials.Register()`](ModMaterials.md#modmaterials-register) returned. null puts back what the item's kind uses. Server only.
+
+<a name="worlditem-setcolor"></a>
+
+#### SetColor
+
+```csharp
+void SetColor(string slot, Color color)
+```
+
+Tints the parts' colour, e.g. to paint one car red. Server only.
+
+<a name="worlditem-setglow"></a>
+
+#### SetGlow
+
+```csharp
+void SetGlow(string slot, Color glow)
+```
+
+Makes the parts give off light of this colour (black for none). Server only.
+
+<a name="worlditem-resetlook"></a>
+
+#### ResetLook
+
+```csharp
+void ResetLook(string slot)
+```
+
+Undoes [`WorldItem.SetMaterial()`](ModWorld.md#worlditem-setmaterial), [`WorldItem.SetColor()`](ModWorld.md#worlditem-setcolor) and [`WorldItem.SetGlow()`](ModWorld.md#worlditem-setglow) for a slot. Server only.
+
 ### Operators
 
 <a name="worlditem-op_equality"></a>

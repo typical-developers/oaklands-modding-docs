@@ -92,6 +92,16 @@ protected ModTrees Trees { get; }
 
 Shortcut for [`ModContext.Trees`](ModContext.md#modcontext-trees).
 
+<a name="mod-materials"></a>
+
+#### Materials
+
+```csharp
+protected ModMaterials Materials { get; }
+```
+
+Shortcut for [`ModContext.Materials`](ModContext.md#modcontext-materials).
+
 <a name="mod-world"></a>
 
 #### World

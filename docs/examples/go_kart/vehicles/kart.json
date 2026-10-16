@@ -18,6 +18,13 @@
   "cameraPivot": [0, 0.9, -0.3],
   "cameraDistance": 4.5,
   "interactions": [
-    { "id": "honk", "label": "Honk", "labelKey": "honkLabel" }
-  ]
+    { "id": "honk", "label": "Honk", "labelKey": "honkLabel" },
+    { "id": "repaint", "label": "Repaint" }
+  ],
+  "materials": {
+    "Body": "paint",
+    "Tyre": "tyre",
+    "Hub": "game:metalchromeshiny",
+    "Seat": "game:sci_fi_padded_fabric"
+  }
 }

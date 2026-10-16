@@ -174,6 +174,16 @@ List<InteractionSpec> Interactions = new()
 
 Extra prompt options, like items'. At most 4.
 
+<a name="vehiclespec-materials"></a>
+
+#### Materials
+
+```csharp
+Dictionary<string, string> Materials = new()
+```
+
+Materials for the model's parts, by the names its materials have in the model file, e.g. `{ "Body": "paint", "Glass": "game:glass" }`; "\*" covers every part not named. A plain id is this mod's own material. Parts not listed keep the model's own materials.
+
 <a name="seatspec"></a>
 
 ## SeatSpec

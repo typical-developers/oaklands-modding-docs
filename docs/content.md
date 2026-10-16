@@ -10,6 +10,7 @@
 | `items/*.json` | Item kinds, one per file: see [Items](#items). |
 | `vehicles/*.json` | Vehicle kinds, one per file: see [Vehicles](#vehicles). |
 | `trees/*.json` | Tree species, one per file: see [Trees](#trees). |
+| `materials/*.json` | Materials for items and vehicles, one per file: see [Materials](#materials). |
 | `sounds/` | `.ogg` and `.wav` files, loaded with the mod for scripts to play. |
 | `icon.png` | Optional. The mod's picture in the mod list; otherwise it shows its initials. |
 | `*.cs` | Scripts, anywhere in the folder except hidden folders, `bin` and `obj`: see [Scripts and the sandbox](sandbox.md). |
@@ -53,6 +54,7 @@ In scripts, this is [`ItemSpec`](api/ModItems.md#itemspec).
 | `scale` | number | `1` | Multiplies the model's size. |
 | `collider` | one of `"box"`, `"convex"` | `"box"` | How the model is made solid. |
 | `interactions` | list of [Interaction](#interaction-objects) objects | `[]` | Options shown when a player looks at the item, besides holding it. At most 4. Handle them with [`ModItems.OnInteract()`](api/ModItems.md#moditems-oninteract). |
+| `materials` | object: each model material's name, or `"*"` for the rest, to a [material](#materials) id | `{}` | Materials for the model's parts, by the names its materials have in the model file, e.g. `{ "Body": "paint", "Glass": "game:glass" }`; "\*" covers every part not named. A plain id is this mod's own material. Parts not listed keep the model's own materials. |
 
 <a name="interaction-objects"></a>
 
@@ -105,6 +107,7 @@ In scripts, this is [`VehicleSpec`](api/ModVehicles.md#vehiclespec).
 | `cameraPivot` | `[x, y, z]` | `[0, 1.5, -1]` | Where the third-person camera orbits. |
 | `cameraDistance` | number | `7` | How far the third-person camera sits from the pivot, in metres. |
 | `interactions` | list of [Interaction](#interaction-objects) objects | `[]` | Extra prompt options, like items'. At most 4. |
+| `materials` | object: each model material's name, or `"*"` for the rest, to a [material](#materials) id | `{}` | Materials for the model's parts, by the names its materials have in the model file, e.g. `{ "Body": "paint", "Glass": "game:glass" }`; "\*" covers every part not named. A plain id is this mod's own material. Parts not listed keep the model's own materials. |
 
 <a name="seat-objects"></a>
 
@@ -195,3 +198,56 @@ In scripts, this is [`TreeSpeciesSpec`](api/ModTrees.md#treespeciesspec).
 | `barkColor` | colour: `[r, g, b]` (0 to 1) or `"#rrggbb"` | `"#FFFFFF"` | Tints the bark; white leaves it as the materials have it. |
 | `leafColor` | colour: `[r, g, b]` (0 to 1) or `"#rrggbb"` | `"#FFFFFF"` | Tints the leaves; white leaves them as the materials have them. |
 | `settings` | object | none | Advanced: any of the Tree Generator's settings, as JSON, applied on top of [`TreeSpeciesSpec.Shape`](api/ModTrees.md#treespeciesspec-shape), e.g. `{ "Trunk": { "Height": 16 } }`. |
+
+<a name="materials"></a>
+
+## Materials
+
+Describes a material. Materials in a mod's `materials` folder are JSON files with these fields, e.g.
+
+```json
+{
+  "id": "neon", "shader": "unlit", "color": "#2a1a40",
+  "emission": "#ff40c0", "emissionStrength": 4, "pulse": 0.5
+}
+```
+
+Use them on a model's parts with the `materials` field of an item or vehicle, which maps the model's material names to material ids.
+
+In scripts, this is [`MaterialSpec`](api/ModMaterials.md#materialspec).
+
+| Key | Type | Default | Description |
+| --- | --- | --- | --- |
+| `id` | text | the file's name | The id within the mod: lowercase letters, digits and '\_', e.g. "neon". |
+| `shader` | text | `"lit"` | "lit" (the game's look, lit by the sun and lamps), "unlit" (its own colour, for screens and signs) or "glass" (the game's see-through glass: uses the colour, opacity and smoothness). |
+| `base` | text | none | Optional: a material to start from, e.g. "game:cobble". Fields left at their defaults keep that material's values, so `{ "base": "game:cobble", "color": "#ffcc88" }` is warmer cobble. |
+| `color` | colour: `[r, g, b]` (0 to 1) or `"#rrggbb"` | `"#FFFFFF"` | Multiplies the texture. |
+| `opacity` | number | `1` | 1 is solid, 0 invisible. Below 1 the surface is see-through and casts no shadow. |
+| `texture` | text | none | A .png in the mod's folder, e.g. "textures/paint.png". None gives a plain colour. |
+| `textureStrength` | number | `1` | 0 shows only the texture's average colour, 1 the whole texture. |
+| `normalMap` | text | none | Optional normal map, a .png in the mod's folder. |
+| `normalStrength` | number | `1` | How strongly the normal map bends the light. |
+| `mapping` | text | `"projected"` | "projected": textures are laid over the model from its sides, in metres, so the model needs no UVs and every texel is the same size (the game's look). "uv": the model's own UVs, for textures painted to fit it. |
+| `textureSize` | number | `2` | Metres one copy of the texture covers, for "projected" mapping. |
+| `tiling` | number | `1` | Copies of the texture across the UVs, for "uv" mapping. |
+| `scrollX` | number | `0` | Moves the texture sideways, in copies per second; 0 for still. |
+| `scrollY` | number | `0` | Moves the texture up, in copies per second; 0 for still. |
+| `metallic` | number | `0` | 0 is plastic or wood, 1 bare metal. |
+| `smoothness` | number | `0.3` | 0 is rough and matte, 1 polished. |
+| `emission` | colour: `[r, g, b]` (0 to 1) or `"#rrggbb"` | `"#000000"` | Light the surface gives off itself, e.g. "#ff4000". Black for none. |
+| `emissionStrength` | number | `1` | Multiplies the emission; above 1 makes it glow. |
+| `emissionMap` | text | none | Optional .png that masks the emission, e.g. lit windows on a wall. |
+| `pulse` | number | `0` | Fades the emission in and out this many times a second; 0 for steady. |
+| `wave` | number | `0` | Moves the surface in and out by up to this many metres, like a flag; 0 for still. |
+| `waveSpeed` | number | `1` | Waves per second. |
+| `alphaCutoff` | number | `0` | Above 0, parts of the texture with less opacity than this are cut away completely, e.g. 0.5 for leaves or a fence. Unlike [`MaterialSpec.Opacity`](api/ModMaterials.md#materialspec-opacity), what's left stays solid and casts shadows. |
+| `doubleSided` | `true` or `false` | `false` | Draws both sides of each face, for thin things like leaves and flags. |
+| `flatShading` | `true` or `false` | `false` | Lights each face flat, for a faceted low-poly look. |
+
+<a name="game-materials"></a>
+
+## Game materials
+
+The game's own materials, for a part's material or a material's `base`. Use them as `game:` and the name, e.g. `"game:cobble"`. There are 300:
+
+`armor_plating_1`, `baobabbark`, `bark`, `bark2`, `bark_shurikeno`, `beat_up_metal`, `birchbark`, `bombastic`, `boomite`, `burlwood1`, `burlwood2`, `burlwood3`, `burlwoodplank1`, `burlwoodplank2`, `burlwoodplank3`, `cactus`, `cactusnocolor`, `candycane`, `carbonfiber`, `cardboardlight`, `cautiontape`, `ceramictilesbig`, `ceramictilesmedium`, `checkered_1`, `checkered_2`, `chestnutplanks`, `chestnutwood`, `chickenmushroom`, `chipboard`, `christmaswallpaper`, `christmaswallpapercheckered`, `christmaswallpapersnowflake`, `christmaswallpapertree`, `circle_textured_metal`, `cobaltgranite`, `cobble`, `construction_particle_board`, `construction_structural_plywood`, `coral1`, `coral2`, `coral3`, `coral4`, `coral4b`, `coral5`, `coral6`, `coralwood1`, `coralwood2`, `cottonwoodbark`, `cypressbark`, `cypressplanks`, `cypresssanded`, `defaultbark`, `developmentgrid`, `diamandcactus`, `diamandcactus2`, `diamond_plate`, `drycoral1`, `errortexture`, `evilmush`, `fabric2`, `foil2`, `foilgradient`, `foiluranium`, `forestfloor`, `forestsand`, `future_metal`, `future_panels_1`, `ghostmushroom`, `granitegreeb`, `granitemetal`, `grasssnow`, `grassv2`, `greenacid_1`, `grid`, `honeycomb`, `industrial_walls`, `lavaglowy`, `leaf1`, `leaf3`, `leafvar2`, `lightfoil`, `lightgrass`, `lightgrass_2`, `lightmetal`, `materialvariant_2`, `materialvariant_3`, `matte_wood`, `matte_wood_brick`, `matte_wood_brick_double`, `matte_wood_checkerboard`, `matte_wood_checkerboard_double`, `matte_wood_checkerboard_triple`, `matte_wood_chevron`, `matte_wood_endless`, `matte_wood_herringbone`, `matte_wood_herringbone_double`, `matte_wood_herringbone_half`, `matte_woodglow`, `messysand`, `metal`, `metal_feathers`, `metal_floor_1`, `metal_grate`, `metal_grate_1`, `metal_grid`, `metal_grid_1`, `metal_grid_3`, `metal_grid_v2`, `metal_grill_13`, `metal_grill_16`, `metal_grill_4`, `metal_grill_5`, `metal_grill_5a`, `metal_ornament`, `metal_panel_8`, `metal_panels_1`, `metal_plate_17`, `metal_plate_18`, `metal_plate_22`, `metal_plate_31`, `metal_plate_46`, `metal_sheet_01`, `metal_sheet_02`, `metal_sheet_03`, `metal_sheet_04`, `metal_sheet_05`, `metal_sheet_06`, `metal_surface_01`, `metal_surface_02`, `metal_tiles_1`, `metal_tiles_2`, `metal_ventilation_1`, `metalchrome`, `metalchromeshiny`, `mossycobblestone`, `mossyslate`, `mossyslate2`, `new_graph`, `normalstud`, `noshading`, `oceansand`, `oil`, `old_brick`, `old_cobblestone`, `old_concrete`, `old_concrete_2`, `old_foil`, `old_grass`, `old_ice`, `old_planks`, `old_sand`, `old_wood`, `old_woodplanks`, `omega`, `opalblue`, `opalbrown`, `opalred`, `palmbark`, `peaceandhearts_dark`, `peaceandhearts_light`, `permaforst`, `petalsanddaisies_dark`, `petalsanddaisies_light`, `pinebark`, `plank`, `plank1`, `plastic_rubber_grid`, `podzol`, `pricklycactus`, `prototype`, `radioactivestone`, `raindbowbutterfry`, `rawbluesteel`, `rawlithium`, `rawopal`, `rawopalblue`, `rawopalred`, `rawore`, `red_sci_fi_metal`, `reinforced_metal`, `ribbed_chipped_metal`, `ribbed_chipped_metal_2`, `rockytrail`, `rough_metal`, `rusted_ribbed_metal`, `sandybeach`, `sci_fi_fabric`, `sci_fi_floor_2`, `sci_fi_grid`, `sci_fi_metal_panel_4`, `sci_fi_metal_panel_5`, `sci_fi_padded_fabric`, `sci_fi_painted_walls`, `sci_fi_panel_1`, `sci_fi_panels_1`, `sci_fi_panels_10`, `sci_fi_panels_11`, `sci_fi_panels_12`, `sci_fi_panels_13`, `sci_fi_panels_14`, `sci_fi_panels_2`, `sci_fi_panels_3`, `sci_fi_panels_4`, `sci_fi_panels_5`, `sci_fi_panels_6`, `sci_fi_panels_7`, `sci_fi_panels_8`, `sci_fi_panels_9`, `sci_fi_screens_1`, `scuffed_iron`, `scuffed_iron_2`, `semirough_metal`, `ship_corridor`, `smooth_fabric`, `space_crate`, `space_crate_1`, `space_cruiser_panels_2`, `spaceship_panels`, `spearmintcandycane`, `steel_plate`, `steel_plate_1`, `storage_container`, `storage_container_2`, `studs`, `studssmall`, `sunandsakura_dark`, `sunandsakura_light`, `tech_braided_cable_1`, `tech_braided_cable_2`, `tech_braided_cable_3`, `tech_braided_cable_4`, `tech_grid`, `tech_plastic_base_1`, `tech_plastic_base_2`, `tech_plastic_grid_1`, `tech_plastic_grid_2`, `tech_plastic_grid_3`, `tech_plastic_grid_4`, `tech_plastic_grid_5`, `tech_polystyrene_1`, `truffle`, `turf`, `uniqueplank1`, `used_stainless_steel`, `used_stainless_steel_2`, `varnished_wood`, `varnished_wood_brick`, `varnished_wood_brick_double`, `varnished_wood_checkerboard`, `varnished_wood_checkerboard_double`, `varnished_wood_checkerboard_triple`, `varnished_wood_chevron`, `varnished_wood_endless`, `varnished_wood_herringbone`, `varnished_wood_herringbone_double`, `varnished_wood_herringbone_half`, `vented_metal_panel`, `vented_metal_panels`, `vertically_lined_metal`, `vintagewallpaper01`, `vintagewallpaper02`, `vintagewallpaper03`, `vintagewallpaper04`, `vintagewallpaper05`, `vintagewallpaper06`, `vintagewallpaper07`, `vintagewallpaper08`, `vintagewallpaper09`, `vintagewallpaper10`, `vintagewallpaper11`, `vintagewallpaper12`, `vintagewallpaper13`, `vintagewallpaper14`, `vintagewallpaper15`, `vintagewallpaper16`, `voidcystal`, `water`, `wavyplank`, `wavyplankglowy`, `weld`, `wetrock`, `wood6`, `wooddark`, `woodlight`, `woodold`, `woodplankshiny`, `worn_military_siding_1`, `worn_modern_panels_1`, `worn_wood`, `worn_wood_brick`, `worn_wood_brick_double`, `worn_wood_checkerboard`, `worn_wood_checkerboard_double`, `worn_wood_checkerboard_triple`, `worn_wood_chevron`, `worn_wood_endless`, `worn_wood_herringbone`, `worn_wood_herringbone_double`, `worn_wood_herringbone_half`, `zigzag_fabric`

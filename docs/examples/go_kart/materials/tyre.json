@@ -1,0 +1,6 @@
+{
+  "id": "tyre",
+  "base": "game:plastic_rubber_grid",
+  "color": "#3a3a3a",
+  "smoothness": 0.1
+}

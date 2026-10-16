@@ -9,6 +9,8 @@ Example mods to learn from. Copy one to start your own, and give it a new `id` i
 Example vehicle mod: a drivable kart with a horn that counts its honks.
 
 - [`KartMod.cs`](examples/go_kart/KartMod.cs)
+- [`materials/paint.json`](examples/go_kart/materials/paint.json)
+- [`materials/tyre.json`](examples/go_kart/materials/tyre.json)
 - [`mod.json`](examples/go_kart/mod.json)
 - [`models/kart.glb`](examples/go_kart/models/kart.glb)
 - [`sounds/horn.wav`](examples/go_kart/sounds/horn.wav)

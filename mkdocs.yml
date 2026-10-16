@@ -53,6 +53,7 @@ nav:
       - "ModInput": api/ModInput.md
       - "ModItems": api/ModItems.md
       - "ModLog": api/ModLog.md
+      - "ModMaterials": api/ModMaterials.md
       - "ModNetwork": api/ModNetwork.md
       - "ModSettings": api/ModSettings.md
       - "ModTimers": api/ModTimers.md

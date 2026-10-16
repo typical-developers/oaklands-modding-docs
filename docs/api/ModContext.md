@@ -132,6 +132,16 @@ ModTrees Trees { get; }
 
 Tree species.
 
+<a name="modcontext-materials"></a>
+
+#### Materials
+
+```csharp
+ModMaterials Materials { get; }
+```
+
+Materials for items' and vehicles' surfaces.
+
 <a name="modcontext-world"></a>
 
 #### World

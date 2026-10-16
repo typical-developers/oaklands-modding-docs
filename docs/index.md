@@ -1,6 +1,6 @@
 # Oaklands modding
 
-A mod is a folder with a `mod.json` in it. JSON files and models add items, vehicles and tree species with no code at all; C# scripts can do much more, from chat commands and synced item data to their own UI and settings. Scripts run in a sandbox, so players can install mods without worrying about what they might do to their computer.
+A mod is a folder with a `mod.json` in it. JSON files and models add items, vehicles, tree species and materials with no code at all; C# scripts can do much more, from chat commands and synced item data to their own UI and settings. Scripts run in a sandbox, so players can install mods without worrying about what they might do to their computer.
 
 - **[Content files](content.md)**: a mod's folder, `mod.json`, and the JSON for items, vehicles and trees.
 - **[Scripts and the sandbox](sandbox.md)**: what scripts can use, and the limits they run under.
@@ -64,6 +64,11 @@ Scripts reach the game through the `Oaklands.Modding` namespace, which every scr
 
 - [`ModLogLevel`](api/ModLog.md#modloglevel): How serious a log line is.
 - [`ModLog`](api/ModLog.md#modlog): Writes to the game's log, tagged with the mod's id.
+
+### [ModMaterials](api/ModMaterials.md)
+
+- [`ModMaterials`](api/ModMaterials.md#modmaterials): Materials: how the surfaces of items and vehicles look.
+- [`MaterialSpec`](api/ModMaterials.md#materialspec): Describes a material.
 
 ### [ModNetwork](api/ModNetwork.md)
 
