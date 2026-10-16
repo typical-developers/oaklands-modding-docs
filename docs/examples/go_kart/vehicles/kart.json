@@ -1,0 +1,23 @@
+{
+  "id": "kart",
+  "name": "Go-Kart",
+  "model": "models/kart.glb",
+  "mass": 220,
+  "centerOfMass": [0, 0.12, 0],
+  "seats": [
+    { "name": "Driver", "position": [0, 0.75, -0.25] }
+  ],
+  "wheels": [
+    { "position": [-0.62, 0.22, 0.72], "radius": 0.22, "steer": true, "drive": false, "visual": "WheelFL" },
+    { "position": [0.62, 0.22, 0.72], "radius": 0.22, "steer": true, "drive": false, "visual": "WheelFR" },
+    { "position": [-0.66, 0.22, -0.72], "radius": 0.22, "steer": false, "drive": true, "visual": "WheelRL" },
+    { "position": [0.66, 0.22, -0.72], "radius": 0.22, "steer": false, "drive": true, "visual": "WheelRR" }
+  ],
+  "engine": { "torque": 420, "reverseTorque": 300, "maxSpeed": 16, "maxReverseSpeed": 5, "brake": 900, "steerAngle": 30 },
+  "suspension": { "distance": 0.12, "spring": 22000, "damper": 2200 },
+  "cameraPivot": [0, 0.9, -0.3],
+  "cameraDistance": 4.5,
+  "interactions": [
+    { "id": "honk", "label": "Honk", "labelKey": "honkLabel" }
+  ]
+}

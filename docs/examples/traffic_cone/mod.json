@@ -1,0 +1,8 @@
+{
+  "id": "traffic_cone",
+  "name": "Traffic Cone",
+  "version": "1.0.0",
+  "author": "Oaklands",
+  "description": "Example content mod: one item, no scripts.",
+  "api": 1
+}

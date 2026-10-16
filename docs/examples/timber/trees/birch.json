@@ -1,0 +1,10 @@
+{
+  "id": "birch",
+  "name": "Birch",
+  "shape": "slender",
+  "seed": 7,
+  "variants": 2,
+  "materials": "aspen",
+  "barkColor": [1.0, 0.97, 0.9],
+  "leafColor": "#b6e07a"
+}

@@ -1,0 +1,7 @@
+{
+  "id": "cone",
+  "name": "Traffic Cone",
+  "model": "models/cone.glb",
+  "mass": 2.5,
+  "collider": "convex"
+}

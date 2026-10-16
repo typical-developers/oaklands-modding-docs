@@ -1,0 +1,8 @@
+{
+  "id": "timber",
+  "name": "Timber!",
+  "version": "1.0.0",
+  "author": "Oaklands",
+  "description": "Example scripted mod: chat commands, tree tracking, timers.",
+  "api": 1
+}
