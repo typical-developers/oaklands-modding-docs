@@ -4,6 +4,13 @@
 
 Example mods to learn from. Copy one to start your own, and give it a new `id` in its `mod.json`.
 
+## Admin Commands (`admin_commands`)
+
+Gives you the ability to spawn in items, easily.
+
+- [`AdminCommands.cs`](examples/admin_commands/AdminCommands.cs)
+- [`mod.json`](examples/admin_commands/mod.json)
+
 ## Go-Kart (`go_kart`)
 
 Example vehicle mod: a drivable kart with a horn that counts its honks.

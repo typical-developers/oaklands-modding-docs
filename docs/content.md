@@ -17,6 +17,8 @@
 
 Models are `.glb` or `.gltf` files, and other files are found by paths relative to the mod's folder, e.g. `models/cone.glb`. Scripts can't read files outside it.
 
+A model's own materials are shown with the game's shader: base colour and texture, normal and emission maps, metallic and roughness amounts (not their texture), unlit, alpha (opaque, mask or blend), double-sided and vertex colours, on the model's first UVs. Older specular-glossiness materials work too. For glow, scrolling, projected textures and the rest, give parts a [material](#materials) with the `materials` field.
+
 Keys in the JSON files aren't case sensitive, but a key the game doesn't know is an error, so typos don't go unnoticed. A kind's `id` is its file name when left out, so `items/cone.json` is `cone`; in the game, and in saves, it becomes `modid:cone`. Changing an id after players have used it orphans what they've made with it.
 
 <a name="modjson"></a>

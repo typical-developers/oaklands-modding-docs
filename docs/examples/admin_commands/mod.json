@@ -1,0 +1,8 @@
+{
+  "id": "admin_commands",
+  "name": "Admin Commands",
+  "version": "1.0.0",
+  "author": "Typical Developers",
+  "description": "Gives you the ability to spawn in items, easily.",
+  "api": 1
+}
