@@ -62,3 +62,4 @@ nav:
       - "ModVehicles": api/ModVehicles.md
       - "ModWorld": api/ModWorld.md
       - "NetData": api/NetData.md
+      - "Sound": api/Sound.md

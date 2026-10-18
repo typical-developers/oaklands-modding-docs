@@ -125,3 +125,7 @@ Scripts reach the game through the `Oaklands.Modding` namespace, which every scr
 ### [NetData](api/NetData.md)
 
 - [`NetData`](api/NetData.md#netdata): A small bag of named values, sent in network messages: numbers, text, true/false, vectors, rotations and colours.
+
+### [Sound](api/Sound.md)
+
+- [`Sound`](api/Sound.md#sound): A sound a mod made with [`ModEffects.CreateSound()`](api/ModEffects.md#modeffects-createsound) or [`ModEffects.CreateSoundForAll()`](api/ModEffects.md#modeffects-createsoundforall), which it can start, stop and change while it plays, e.g. an engine whose pitch follows its speed.

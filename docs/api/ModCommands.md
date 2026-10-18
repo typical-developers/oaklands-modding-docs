@@ -29,7 +29,7 @@ Arguments are checked before the handler runs; the player sees the usage line ("
 ModCommand Register(string name, string description, Action<CommandCall> handler)
 ```
 
-Adds a command. `name` is what players type after the slash, e.g. "spawn" for "/spawn". Letters, digits, '-' and '\_'. Returns the command, to describe its arguments.
+Adds a command. `name` is what players type after the slash, e.g. "spawn" for "/spawn". Letters, digits, '-' and '\_'. Returns the command, to describe its arguments. If the game or another running mod has a command with the same name, players type this one with the mod's id in front, e.g. "/my\_mod:spawn" (that always works, clash or not).
 
 <a name="modcommands-unregister"></a>
 
