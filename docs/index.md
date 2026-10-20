@@ -111,6 +111,7 @@ Scripts reach the game through the `Oaklands.Modding` namespace, which every scr
 
 - [`ModVehicles`](api/ModVehicles.md#modvehicles): Vehicles added by mods.
 - [`VehicleSpec`](api/ModVehicles.md#vehiclespec): Describes a vehicle, in its own space: metres, +Y up, +Z forward, with the origin on the ground under its middle.
+- [`NitrousSpec`](api/ModVehicles.md#nitrousspec): A vehicle's nitrous tank.
 - [`SeatSpec`](api/ModVehicles.md#seatspec): A seat in a vehicle.
 - [`WheelSpec`](api/ModVehicles.md#wheelspec): A vehicle's wheel.
 - [`EngineSpec`](api/ModVehicles.md#enginespec): How a vehicle drives.

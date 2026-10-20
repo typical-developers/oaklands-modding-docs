@@ -15,6 +15,13 @@
   ],
   "engine": { "torque": 420, "reverseTorque": 300, "maxSpeed": 16, "maxReverseSpeed": 5, "brake": 900, "steerAngle": 30 },
   "suspension": { "distance": 0.12, "spring": 22000, "damper": 2200 },
+  "nitrous": {
+    "capacity": 4,
+    "acceleration": 7,
+    "maxSpeed": 24,
+    "refillTime": 15,
+    "exhausts": [[0.28, 0.3, -1.02], [-0.28, 0.3, -1.02]]
+  },
   "cameraPivot": [0, 0.9, -0.3],
   "cameraDistance": 4.5,
   "interactions": [

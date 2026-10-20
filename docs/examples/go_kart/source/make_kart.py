@@ -84,6 +84,8 @@ body.box("Seat", (0, 0.56, -0.47), (0.46, 0.5, 0.1))           # seat back
 body.box("Frame", (0, 0.42, 0.42), (0.05, 0.05, 0.4))          # steering column
 body.box("Frame", (0, 0.55, 0.3), (0.34, 0.05, 0.05))          # steering wheel
 body.box("Body", (0, 0.32, -0.82), (0.95, 0.12, 0.14))         # rear bumper
+body.box("Hub", (0.28, 0.3, -0.95), (0.07, 0.07, 0.14))          # exhaust pipes (nitrous
+body.box("Hub", (-0.28, 0.3, -0.95), (0.07, 0.07, 0.14))         # flames come out here)
 
 wheel = Part()
 wheel.wheel()

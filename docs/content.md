@@ -112,6 +112,7 @@ In scripts, this is [`VehicleSpec`](api/ModVehicles.md#vehiclespec).
 | `cameraDistance` | number | `7` | How far the third-person camera sits from the pivot, in metres. |
 | `interactions` | list of [Interaction](#interaction-objects) objects | `[]` | Extra prompt options, like items'. At most 4. |
 | `materials` | object: each model material's name, or `"*"` for the rest, to a [material](#materials) id | `{}` | Materials for the model's parts, by the names its materials have in the model file, e.g. `{ "Body": "paint", "Glass": "game:glass" }`; "\*" covers every part not named. A plain id is this mod's own material. Parts not listed keep the model's own materials. |
+| `nitrous` | [Nitrous](#nitrous-objects) object | none | A nitrous tank: the driver holds Sprint (Shift) to boost, with flames out of the exhausts and a tank gauge on the HUD. Leave it out for no nitrous. |
 
 <a name="seat-objects"></a>
 
@@ -172,6 +173,22 @@ In scripts, this is [`SuspensionSpec`](api/ModVehicles.md#suspensionspec).
 | `distance` | number | `0.3` | How far the wheels travel, in metres. |
 | `spring` | number | `35000` | Stiffness: higher bounces less but feels harder. |
 | `damper` | number | `4500` | How quickly bouncing dies down. |
+
+<a name="nitrous-objects"></a>
+
+### Nitrous objects
+
+A vehicle's nitrous tank.
+
+In scripts, this is [`NitrousSpec`](api/ModVehicles.md#nitrousspec).
+
+| Key | Type | Default | Description |
+| --- | --- | --- | --- |
+| `capacity` | number | `4` | Seconds of boost in a full tank. |
+| `acceleration` | number | `8` | Extra forward push while boosting, in metres per second per second. |
+| `maxSpeed` | number | `30` | The boost stops pushing above this speed, in metres per second. |
+| `refillTime` | number | `15` | Seconds an empty tank takes to refill. It starts a couple of seconds after the boost ends. |
+| `exhausts` | list of `[x, y, z]` | `[]` | Where the flames come out, at the end of each exhaust pipe; they point straight back. Empty: two at the back of the model. |
 
 <a name="trees"></a>
 

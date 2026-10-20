@@ -1,6 +1,6 @@
 # ModVehicles
 
-[All docs](../index.md) · In this page: [`ModVehicles`](#modvehicles) · [`VehicleSpec`](#vehiclespec) · [`SeatSpec`](#seatspec) · [`WheelSpec`](#wheelspec) · [`EngineSpec`](#enginespec) · [`SuspensionSpec`](#suspensionspec)
+[All docs](../index.md) · In this page: [`ModVehicles`](#modvehicles) · [`VehicleSpec`](#vehiclespec) · [`NitrousSpec`](#nitrousspec) · [`SeatSpec`](#seatspec) · [`WheelSpec`](#wheelspec) · [`EngineSpec`](#enginespec) · [`SuspensionSpec`](#suspensionspec)
 
 <a name="modvehicles"></a>
 
@@ -183,6 +183,76 @@ Dictionary<string, string> Materials = new()
 ```
 
 Materials for the model's parts, by the names its materials have in the model file, e.g. `{ "Body": "paint", "Glass": "game:glass" }`; "\*" covers every part not named. A plain id is this mod's own material. Parts not listed keep the model's own materials.
+
+<a name="vehiclespec-nitrous"></a>
+
+#### Nitrous
+
+```csharp
+NitrousSpec Nitrous
+```
+
+A nitrous tank: the driver holds Sprint (Shift) to boost, with flames out of the exhausts and a tank gauge on the HUD. Leave it out for no nitrous.
+
+<a name="nitrousspec"></a>
+
+## NitrousSpec
+
+*class*
+
+A vehicle's nitrous tank.
+
+### Fields
+
+<a name="nitrousspec-capacity"></a>
+
+#### Capacity
+
+```csharp
+float Capacity = 4f
+```
+
+Seconds of boost in a full tank.
+
+<a name="nitrousspec-acceleration"></a>
+
+#### Acceleration
+
+```csharp
+float Acceleration = 8f
+```
+
+Extra forward push while boosting, in metres per second per second.
+
+<a name="nitrousspec-maxspeed"></a>
+
+#### MaxSpeed
+
+```csharp
+float MaxSpeed = 30f
+```
+
+The boost stops pushing above this speed, in metres per second.
+
+<a name="nitrousspec-refilltime"></a>
+
+#### RefillTime
+
+```csharp
+float RefillTime = 15f
+```
+
+Seconds an empty tank takes to refill. It starts a couple of seconds after the boost ends.
+
+<a name="nitrousspec-exhausts"></a>
+
+#### Exhausts
+
+```csharp
+List<Vector3> Exhausts = new()
+```
+
+Where the flames come out, at the end of each exhaust pipe; they point straight back. Empty: two at the back of the model.
 
 <a name="seatspec"></a>
 
