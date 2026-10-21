@@ -10,6 +10,18 @@
 
 Players and items in the world. Server only unless noted.
 
+### Properties
+
+<a name="modworld-timeofday"></a>
+
+#### TimeOfDay
+
+```csharp
+float TimeOfDay { get; set; }
+```
+
+The hour of the day, 0 up to 24 (13.5 is half past one in the afternoon), the same for every player. Read it anywhere; setting it changes the sky for everyone and is saved with the world. Server only to set.
+
 ### Methods
 
 <a name="modworld-getplayers"></a>

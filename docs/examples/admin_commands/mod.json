@@ -1,8 +1,8 @@
 {
   "id": "admin_commands",
   "name": "Admin Commands",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Typical Developers",
-  "description": "Gives you the ability to spawn in items, easily.",
+  "description": "Gives you the ability to spawn in items, easily, and change the time of day.",
   "api": 1
 }

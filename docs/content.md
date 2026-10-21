@@ -35,7 +35,7 @@ Keys in the JSON files aren't case sensitive, but a key the game doesn't know is
 | --- | --- | --- | --- |
 | `id` | text | none | Required. 1 to 32 lowercase letters, digits or '\_', e.g. "my\_mod". Content ids become "my\_mod:thing", and worlds remember mods by it, so never change it once players use the mod. |
 | `name` | text | none | What players see in the mod list. Defaults to the id. |
-| `version` | text | `"1.0.0"` | Shown in the mod list, e.g. "1.2.0". |
+| `version` | text | `"1.0.0"` | Shown in the mod list, e.g. "1.2.0". When two installed mods share an id, the one with the higher version is used. |
 | `author` | text | none | Who made it, shown in the mod list. |
 | `description` | text | none | A sentence about what it adds, shown in the mod list. |
 | `api` | whole number | `1` | The API version the mod was made for. |

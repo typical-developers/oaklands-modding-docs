@@ -6,7 +6,7 @@ Example mods to learn from. Copy one to start your own, and give it a new `id` i
 
 ## Admin Commands (`admin_commands`)
 
-Gives you the ability to spawn in items, easily.
+Gives you the ability to spawn in items, easily, and change the time of day.
 
 - [`AdminCommands.cs`](examples/admin_commands/AdminCommands.cs)
 - [`mod.json`](examples/admin_commands/mod.json)
