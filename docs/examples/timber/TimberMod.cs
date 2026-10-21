@@ -20,7 +20,7 @@ public sealed class TimberMod : Mod
         Settings.AddToggle("show_counter", "Show Tree Counter",
             true, "Shows how many trees have fallen this session, in the corner.");
         Settings.AddChoice("counter_corner", "Counter Corner",
-            new[] { "Top Left", "Top Right", "Bottom Right" }, 1, "Where the tree counter sits.");
+            new[] { "Top Left", "Top Right", "Bottom Right" }, 0, "Where the tree counter sits. Top Left by default, clear of the minimap.");
         Settings.Changed += _ => PlaceCounter();
 
         Events.TreeFelled += OnTreeFelled;
