@@ -37,6 +37,13 @@ Scripts reach the game through the `Oaklands.Modding` namespace, which every scr
 
 - [`ModContext`](api/ModContext.md#modcontext): One loaded mod's view of the game.
 
+### [ModCrafting](api/ModCrafting.md)
+
+- [`ModCrafting`](api/ModCrafting.md#modcrafting): Recipes in the inventory's Crafting tab.
+- [`RecipeCategory`](api/ModCrafting.md#recipecategory): The groups recipes are listed under.
+- [`RecipeSpec`](api/ModCrafting.md#recipespec): Describes a recipe, e.g. a mod's `recipes/pickaxe.json`:
+- [`CraftedEvent`](api/ModCrafting.md#craftedevent): A player making a recipe once, for [`ModEvents.Crafted`](api/ModEvents.md#modevents-crafted).
+
 ### [ModEffects](api/ModEffects.md)
 
 - [`ModEffects`](api/ModEffects.md#modeffects): Sounds and other things players see and hear.
@@ -52,6 +59,14 @@ Scripts reach the game through the `Oaklands.Modding` namespace, which every scr
 
 - [`ModInput`](api/ModInput.md#modinput): The keyboard and mouse buttons, on clients.
 - [`ModKey`](api/ModInput.md#modkey): A key or mouse button, for [`ModInput`](api/ModInput.md#modinput).
+
+### [ModInventory](api/ModInventory.md)
+
+- [`ModInventory`](api/ModInventory.md#modinventory): Players' inventories, and items that only live in them.
+- [`InventoryEntry`](api/ModInventory.md#inventoryentry): One stack in a player's inventory.
+- [`InventoryCategory`](api/ModInventory.md#inventorycategory): The groups items are sorted into.
+- [`InventorySpec`](api/ModInventory.md#inventoryspec): How a mod's item or tool sits in the inventory, as the `inventory` part of its spec, e.g. `"inventory": { "size": [2, 1], "weight": 1.5, "category": "Tool" }`.
+- [`InventoryItemSpec`](api/ModInventory.md#inventoryitemspec): An item with no model that only lives in inventories, e.g. a mod's `inventory/nail.json`: `{ "id": "nail", "name": "Nails", "icon": "icons/nail.png", "maxStack": 50 }`.
 
 ### [ModItems](api/ModItems.md)
 
@@ -83,6 +98,15 @@ Scripts reach the game through the `Oaklands.Modding` namespace, which every scr
 
 - [`ModTimers`](api/ModTimers.md#modtimers): Runs code later, once or repeatedly, on the main thread.
 - [`ModTimer`](api/ModTimers.md#modtimer): A timer from [`ModTimers`](api/ModTimers.md#modtimers); cancel it to stop it.
+
+### [ModTools](api/ModTools.md)
+
+- [`ModTools`](api/ModTools.md#modtools): Tools added by mods: held in the hand from the hotbar like the axe, swung with the left mouse button (and, if they have one, a second use on the right).
+- [`ToolSwing`](api/ModTools.md#toolswing): How a tool moves when it's used.
+- [`ToolSpec`](api/ModTools.md#toolspec): Describes a tool, e.g. a mod's `tools/pickaxe.json`:
+- [`ToolHold`](api/ModTools.md#toolhold): A tool's place in the hand, in metres and degrees.
+- [`ToolHitKind`](api/ModTools.md#toolhitkind): What a tool's use struck, for [`ToolUseEvent.HitKind`](api/ModTools.md#tooluseevent-hitkind).
+- [`ToolUseEvent`](api/ModTools.md#tooluseevent): A player using a tool, for [`ModTools.OnUse()`](api/ModTools.md#modtools-onuse).
 
 ### [ModTrees](api/ModTrees.md)
 

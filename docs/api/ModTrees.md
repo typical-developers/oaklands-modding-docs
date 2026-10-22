@@ -70,6 +70,16 @@ string Name
 
 What players see, e.g. "Birch".
 
+<a name="treespeciesspec-model"></a>
+
+#### Model
+
+```csharp
+string Model
+```
+
+Optional: a tree built by hand in the game's Tree Editor (a file in the mod's folder, e.g. "tree\_models/cherry.json") instead of grown by the generator. Shape, seed, variants and settings are then unused; the materials and colours below still apply.
+
 <a name="treespeciesspec-shape"></a>
 
 #### Shape

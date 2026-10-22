@@ -1,0 +1,8 @@
+{
+  "name": "Stone",
+  "description": "Rough stone, mined with a pickaxe.",
+  "icon": "icons/stone.png",
+  "maxStack": 20,
+  "weight": 1.5,
+  "category": "misc"
+}

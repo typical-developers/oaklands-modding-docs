@@ -72,6 +72,36 @@ protected ModItems Items { get; }
 
 Shortcut for [`ModContext.Items`](ModContext.md#modcontext-items).
 
+<a name="mod-tools"></a>
+
+#### Tools
+
+```csharp
+protected ModTools Tools { get; }
+```
+
+Shortcut for [`ModContext.Tools`](ModContext.md#modcontext-tools).
+
+<a name="mod-inventory"></a>
+
+#### Inventory
+
+```csharp
+protected ModInventory Inventory { get; }
+```
+
+Shortcut for [`ModContext.Inventory`](ModContext.md#modcontext-inventory).
+
+<a name="mod-crafting"></a>
+
+#### Crafting
+
+```csharp
+protected ModCrafting Crafting { get; }
+```
+
+Shortcut for [`ModContext.Crafting`](ModContext.md#modcontext-crafting).
+
 <a name="mod-vehicles"></a>
 
 #### Vehicles

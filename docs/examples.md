@@ -24,6 +24,20 @@ Example vehicle mod: a drivable kart with a horn that counts its honks.
 - [`source/make_kart.py`](examples/go_kart/source/make_kart.py)
 - [`vehicles/kart.json`](examples/go_kart/vehicles/kart.json)
 
+## Stone Tools (`stone_tools`)
+
+Example gameplay mod: a craftable pickaxe tool that mines stone, an inventory-only item and recipes.
+
+- [`StoneTools.cs`](examples/stone_tools/StoneTools.cs)
+- [`icons/pickaxe.png`](examples/stone_tools/icons/pickaxe.png)
+- [`icons/stone.png`](examples/stone_tools/icons/stone.png)
+- [`inventory/stone.json`](examples/stone_tools/inventory/stone.json)
+- [`mod.json`](examples/stone_tools/mod.json)
+- [`models/pickaxe.glb`](examples/stone_tools/models/pickaxe.glb)
+- [`recipes/pickaxe.json`](examples/stone_tools/recipes/pickaxe.json)
+- [`source/make_pickaxe.py`](examples/stone_tools/source/make_pickaxe.py)
+- [`tools/pickaxe.json`](examples/stone_tools/tools/pickaxe.json)
+
 ## Timber! (`timber`)
 
 Example scripted mod: chat commands, tree tracking, timers.

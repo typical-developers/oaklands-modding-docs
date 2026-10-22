@@ -1,0 +1,8 @@
+{
+  "id": "stone_tools",
+  "name": "Stone Tools",
+  "version": "1.0.0",
+  "author": "Oaklands",
+  "description": "Example gameplay mod: a craftable pickaxe tool that mines stone, an inventory-only item and recipes.",
+  "api": 1
+}

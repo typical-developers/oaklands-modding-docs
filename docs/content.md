@@ -9,7 +9,11 @@
 | `mod.json` | Required. The mod's id and name: see [mod.json](#modjson). |
 | `items/*.json` | Item kinds, one per file: see [Items](#items). |
 | `vehicles/*.json` | Vehicle kinds, one per file: see [Vehicles](#vehicles). |
+| `tools/*.json` | Tools held from the hotbar, one per file: see [Tools](#tools). |
+| `inventory/*.json` | Items that only live in inventories, one per file: see [Inventory items](#inventory-items). |
+| `recipes/*.json` | Crafting recipes, one per file: see [Recipes](#recipes). |
 | `trees/*.json` | Tree species, one per file: see [Trees](#trees). |
+| `tree_models/*.json` | Trees built by hand in the game's Tree Editor, which a tree file names with `model`. |
 | `materials/*.json` | Materials for items and vehicles, one per file: see [Materials](#materials). |
 | `sounds/` | `.ogg` and `.wav` files, loaded with the mod for scripts to play. |
 | `icon.png` | Optional. The mod's picture in the mod list; otherwise it shows its initials. |
@@ -59,6 +63,7 @@ In scripts, this is [`ItemSpec`](api/ModItems.md#itemspec).
 | `collider` | one of `"box"`, `"convex"` | `"box"` | How the model is made solid. |
 | `interactions` | list of [Interaction](#interaction-objects) objects | `[]` | Options shown when a player looks at the item, besides holding it. At most 4. Handle them with [`ModItems.OnInteract()`](api/ModItems.md#moditems-oninteract). |
 | `materials` | object: each model material's name, or `"*"` for the rest, to a [material](#materials) id | `{}` | Materials for the model's parts, by the names its materials have in the model file, e.g. `{ "Body": "paint", "Glass": "game:glass" }`; "\*" covers every part not named. A plain id is this mod's own material. Parts not listed keep the model's own materials. |
+| `inventory` | [Inventory](#inventory-objects) object | see below | How it sits in players' inventories, e.g. `"inventory": { "size": [2, 2], "weight": 3 }`. Items are storable (one per stack, keeping their data) unless this says `"storable": false`. |
 
 <a name="interaction-objects"></a>
 
@@ -75,6 +80,23 @@ In scripts, this is [`InteractionSpec`](api/ModItems.md#interactionspec).
 | `holdSeconds` | number | `0` | Seconds the key must be held; 0 for a press. |
 | `labelKey` | text | none | Optional: an item data key holding text to show instead of [`InteractionSpec.Label`](api/ModItems.md#interactionspec-label), so it can change per item (set it with [`WorldItem.SetData()`](api/ModWorld.md#worlditem-setdata)). |
 | `enabledKey` | text | none | Optional: an item data key that must be true for the option to show. |
+
+<a name="inventory-objects"></a>
+
+### Inventory objects
+
+How a mod's item or tool sits in the inventory, as the `inventory` part of its spec, e.g. `"inventory": { "size": [2, 1], "weight": 1.5, "category": "Tool" }`.
+
+In scripts, this is [`InventorySpec`](api/ModInventory.md#inventoryspec).
+
+| Key | Type | Default | Description |
+| --- | --- | --- | --- |
+| `storable` | `true` or `false` | `true` | False to keep it out of inventories: it can only be dragged around. |
+| `size` | `[width, height]` | `[1, 1]` | Cells it takes up, [width, height]. 1 to 6 each. |
+| `weight` | number | `1` | Kilograms, as the inventory counts it. |
+| `category` | one of `"misc"`, `"tool"`, `"wood"`, `"food"`, `"medical"`, `"gear"` | `"misc"` |  |
+| `belt` | `true` or `false` | `false` | Allowed in the tool belt. Tools always are. |
+| `description` | text | none | Shown when the item's card is open. |
 
 <a name="vehicles"></a>
 
@@ -190,6 +212,104 @@ In scripts, this is [`NitrousSpec`](api/ModVehicles.md#nitrousspec).
 | `refillTime` | number | `15` | Seconds an empty tank takes to refill. It starts a couple of seconds after the boost ends. |
 | `exhausts` | list of `[x, y, z]` | `[]` | Where the flames come out, at the end of each exhaust pipe; they point straight back. Empty: two at the back of the model. |
 
+<a name="tools"></a>
+
+## Tools
+
+Describes a tool, e.g. a mod's `tools/pickaxe.json`:
+
+```json
+{
+  "id": "pickaxe", "name": "Pickaxe", "model": "models/pickaxe.glb",
+  "icon": "icons/pickaxe.png", "swing": "Swing", "useSeconds": 0.7, "range": 2.5,
+  "hold": { "position": [0, 0, 0.1], "rotation": [0, 0, 0] },
+  "inventory": { "size": [1, 3] }
+}
+```
+
+In scripts, this is [`ToolSpec`](api/ModTools.md#toolspec).
+
+| Key | Type | Default | Description |
+| --- | --- | --- | --- |
+| `id` | text | the file's name | The id within the mod: lowercase letters, digits and '\_', e.g. "pickaxe". |
+| `name` | text | none | What players see, e.g. "Pickaxe". |
+| `model` | text | none | A .glb or .gltf file, relative to the mod's folder. Model it held upright, the handle's grip at the origin and the head up (+Y), facing forward (+Z). |
+| `icon` | text | none | A square .png icon for the hotbar and inventory. Optional. |
+| `mass` | number | `1` | Kilograms, lying on the ground. |
+| `scale` | number | `1` | Multiplies the model's size. |
+| `collider` | one of `"box"`, `"convex"` | `"box"` | How the model is made solid on the ground. |
+| `materials` | object: each model material's name, or `"*"` for the rest, to a [material](#materials) id | `{}` | Materials for the model's parts, as for [`ItemSpec.Materials`](api/ModItems.md#itemspec-materials). |
+| `hold` | [ToolHold](#toolhold-objects) object | see below | Where it sits in the hand others see. Usually fine as it is. |
+| `viewHold` | [ToolHold](#toolhold-objects) object | see below | Where it sits in first person, from the camera. |
+| `swing` | one of `"swing"`, `"stab"`, `"raise"`, `"none"` | `"swing"` | How it moves when used. |
+| `useSeconds` | number | `0.5` | Seconds between uses (the swing fits in this). 0.1 to 10. |
+| `range` | number | `2.5` | How far a use reaches, in metres, for what it hits. 0.5 to 10. |
+| `repeat` | `true` or `false` | `true` | Keeps being used while the button is held. |
+| `altUse` | `true` or `false` | `false` | Has a second use, on the right mouse button (see [`ToolUseEvent.Alt`](api/ModTools.md#tooluseevent-alt)). |
+| `inventory` | [Inventory](#inventory-objects) object | see below | How it sits in the inventory. Tools are always storable. |
+
+<a name="toolhold-objects"></a>
+
+### ToolHold objects
+
+A tool's place in the hand, in metres and degrees.
+
+In scripts, this is [`ToolHold`](api/ModTools.md#toolhold).
+
+| Key | Type | Default | Description |
+| --- | --- | --- | --- |
+| `position` | `[x, y, z]` | `[0, 0, 0]` |  |
+| `rotation` | `[x, y, z]` | `[0, 0, 0]` | Euler angles, degrees. |
+
+<a name="inventory-items"></a>
+
+## Inventory items
+
+An item with no model that only lives in inventories, e.g. a mod's `inventory/nail.json`: `{ "id": "nail", "name": "Nails", "icon": "icons/nail.png", "maxStack": 50 }`. It can't be dropped into the world.
+
+In scripts, this is [`InventoryItemSpec`](api/ModInventory.md#inventoryitemspec).
+
+| Key | Type | Default | Description |
+| --- | --- | --- | --- |
+| `id` | text | the file's name | The id within the mod: lowercase letters, digits and '\_'. |
+| `name` | text | none | What players see. |
+| `description` | text | none |  |
+| `icon` | text | none | A square .png, relative to the mod's folder. Optional. |
+| `size` | `[width, height]` | `[1, 1]` | Cells it takes up, [width, height]. 1 to 6 each. |
+| `maxStack` | whole number | `1` | How many fit in one stack, 1 to 999. |
+| `weight` | number | `0.1` | Kilograms each. |
+| `category` | one of `"misc"`, `"tool"`, `"wood"`, `"food"`, `"medical"`, `"gear"` | `"misc"` |  |
+| `belt` | `true` or `false` | `false` | Allowed in the tool belt. |
+
+<a name="recipes"></a>
+
+## Recipes
+
+Describes a recipe, e.g. a mod's `recipes/pickaxe.json`:
+
+```json
+{
+  "id": "pickaxe", "output": "pickaxe", "station": "workbench", "seconds": 4,
+  "ingredients": { "planks": 2, "stone": 3 }
+}
+```
+
+Plain ids are looked up as this mod's first, then the game's; "othermod:item" names another mod's.
+
+In scripts, this is [`RecipeSpec`](api/ModCrafting.md#recipespec).
+
+| Key | Type | Default | Description |
+| --- | --- | --- | --- |
+| `id` | text | the file's name | The id within the mod: lowercase letters, digits and '\_'. |
+| `name` | text | none | What the recipe is called. Empty for the name of what it makes. |
+| `description` | text | none | Empty for the description of what it makes. |
+| `category` | one of `"tools"`, `"building"`, `"materials"`, `"survival"` | `"tools"` |  |
+| `station` | text | none | The station kind it's made at, e.g. "workbench" (see [`ModCrafting.GetStationIds()`](api/ModCrafting.md#modcrafting-getstationids)); empty for by hand. |
+| `output` | text | none | What it makes: an inventory item, a mod item or tool. An item that can't be stored (or a vehicle) is put down beside the station instead. |
+| `count` | whole number | `1` | How many it makes, for stackable items. |
+| `ingredients` | object: each item's id to how many | `{}` | What it uses up: item id to how many. |
+| `seconds` | number | `2` | Seconds to make one. |
+
 <a name="trees"></a>
 
 ## Trees
@@ -210,6 +330,7 @@ In scripts, this is [`TreeSpeciesSpec`](api/ModTrees.md#treespeciesspec).
 | --- | --- | --- | --- |
 | `id` | text | the file's name | The id within the mod: lowercase letters, digits and '\_', e.g. "birch". |
 | `name` | text | none | What players see, e.g. "Birch". |
+| `model` | text | none | Optional: a tree built by hand in the game's Tree Editor (a file in the mod's folder, e.g. "tree\_models/cherry.json") instead of grown by the generator. Shape, seed, variants and settings are then unused; the materials and colours below still apply. |
 | `shape` | text | `"broadleaf"` | "broadleaf" (like ash), "conifer" (like pine) or "slender" (like aspen). |
 | `seed` | whole number | `1` | Different seeds give differently shaped trees. |
 | `variants` | whole number | `2` | Different trees per growth stage, 1 to 6. More look less alike but take longer to grow when the mod loads. |

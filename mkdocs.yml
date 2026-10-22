@@ -48,15 +48,18 @@ nav:
       - "ModChat": api/ModChat.md
       - "ModCommands": api/ModCommands.md
       - "ModContext": api/ModContext.md
+      - "ModCrafting": api/ModCrafting.md
       - "ModEffects": api/ModEffects.md
       - "ModEvents": api/ModEvents.md
       - "ModInput": api/ModInput.md
+      - "ModInventory": api/ModInventory.md
       - "ModItems": api/ModItems.md
       - "ModLog": api/ModLog.md
       - "ModMaterials": api/ModMaterials.md
       - "ModNetwork": api/ModNetwork.md
       - "ModSettings": api/ModSettings.md
       - "ModTimers": api/ModTimers.md
+      - "ModTools": api/ModTools.md
       - "ModTrees": api/ModTrees.md
       - "ModUI": api/ModUI.md
       - "ModVehicles": api/ModVehicles.md

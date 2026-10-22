@@ -112,6 +112,36 @@ ModItems Items { get; }
 
 Item kinds, and what happens when they're used.
 
+<a name="modcontext-tools"></a>
+
+#### Tools
+
+```csharp
+ModTools Tools { get; }
+```
+
+Tool kinds held from the hotbar, and what happens when they're used.
+
+<a name="modcontext-inventory"></a>
+
+#### Inventory
+
+```csharp
+ModInventory Inventory { get; }
+```
+
+Players' inventories, and items that only live in them.
+
+<a name="modcontext-crafting"></a>
+
+#### Crafting
+
+```csharp
+ModCrafting Crafting { get; }
+```
+
+Recipes in the Crafting tab.
+
 <a name="modcontext-vehicles"></a>
 
 #### Vehicles

@@ -142,6 +142,36 @@ event Action<WorldItem, string> ItemDataChanged
 
 A value in an item's data changed (on the server and every client).
 
+<a name="modevents-toolused"></a>
+
+#### ToolUsed
+
+```csharp
+event Action<ToolUseEvent> ToolUsed
+```
+
+A player used a mod's tool. Server only; [`ModTools.OnUse()`](ModTools.md#modtools-onuse) is a shortcut for one tool.
+
+<a name="modevents-toolusedlocally"></a>
+
+#### ToolUsedLocally
+
+```csharp
+event Action<ToolUseEvent> ToolUsedLocally
+```
+
+The local player used a mod's tool, on their own client, as they swung it: for instant feedback like a sound. The hit is worked out here, so it can differ slightly from the server's.
+
+<a name="modevents-crafted"></a>
+
+#### Crafted
+
+```csharp
+event Action<CraftedEvent> Crafted
+```
+
+A player made a recipe once (the game's or a mod's). Server only.
+
 <a name="chatmessageevent"></a>
 
 ## ChatMessageEvent

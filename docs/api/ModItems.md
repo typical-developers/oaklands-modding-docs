@@ -165,6 +165,16 @@ Dictionary<string, string> Materials = new()
 
 Materials for the model's parts, by the names its materials have in the model file, e.g. `{ "Body": "paint", "Glass": "game:glass" }`; "\*" covers every part not named. A plain id is this mod's own material. Parts not listed keep the model's own materials.
 
+<a name="itemspec-inventory"></a>
+
+#### Inventory
+
+```csharp
+InventorySpec Inventory = new()
+```
+
+How it sits in players' inventories, e.g. `"inventory": { "size": [2, 2], "weight": 3 }`. Items are storable (one per stack, keeping their data) unless this says `"storable": false`.
+
 <a name="interactionspec"></a>
 
 ## InteractionSpec

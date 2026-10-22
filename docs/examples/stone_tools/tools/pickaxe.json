@@ -1,0 +1,10 @@
+{
+  "name": "Pickaxe",
+  "model": "models/pickaxe.glb",
+  "icon": "icons/pickaxe.png",
+  "mass": 2,
+  "swing": "swing",
+  "useSeconds": 0.8,
+  "range": 2.5,
+  "inventory": { "size": [1, 3], "weight": 2, "description": "Mines stone from the ground." }
+}
