@@ -8,7 +8,7 @@
 
 *class*
 
-Sounds and other things players see and hear.
+Sounds, lines and other things players see and hear.
 
 ### Methods
 
@@ -61,3 +61,23 @@ void DestroyAllSounds()
 ```
 
 Destroys every sound this mod has made with [`ModEffects.CreateSound()`](ModEffects.md#modeffects-createsound) or [`ModEffects.CreateSoundForAll()`](ModEffects.md#modeffects-createsoundforall).
+
+<a name="modeffects-createline"></a>
+
+#### CreateLine
+
+```csharp
+Line CreateLine()
+```
+
+Makes a line, e.g. a cable or rope, drawn through points with [`Line.SetPoints()`](Line.md#line-setpoints) or [`Line.SetRope()`](Line.md#line-setrope). Only this player sees it; does nothing (an invalid line) on a server with no player. Lines go when the mod unloads or the world closes.
+
+<a name="modeffects-destroyalllines"></a>
+
+#### DestroyAllLines
+
+```csharp
+void DestroyAllLines()
+```
+
+Destroys every line this mod has made.

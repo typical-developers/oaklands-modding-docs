@@ -1,6 +1,6 @@
 # ModEvents
 
-[All docs](../index.md) · In this page: [`ModEvents`](#modevents) · [`ChatMessageEvent`](#chatmessageevent) · [`InteractEvent`](#interactevent) · [`TreeFelledEvent`](#treefelledevent)
+[All docs](../index.md) · In this page: [`ModEvents`](#modevents) · [`ChatMessageEvent`](#chatmessageevent) · [`InteractEvent`](#interactevent) · [`HeldItemUseEvent`](#helditemuseevent) · [`SeatEvent`](#seatevent) · [`TreeFelledEvent`](#treefelledevent)
 
 <a name="modevents"></a>
 
@@ -172,6 +172,66 @@ event Action<CraftedEvent> Crafted
 
 A player made a recipe once (the game's or a mod's). Server only.
 
+<a name="modevents-worldloaded"></a>
+
+#### WorldLoaded
+
+```csharp
+event Action WorldLoaded
+```
+
+The world's save has been read (or a new world has started), after [`ModEvents.ServerStarted`](ModEvents.md#modevents-serverstarted): its items are in place and [`ModContext.WorldData`](ModContext.md#modcontext-worlddata) holds what was saved. Raised for a mod that loads while a world is already open too. Server only.
+
+<a name="modevents-movefinished"></a>
+
+#### MoveFinished
+
+```csharp
+event Action<WorldItem, MoveState> MoveFinished
+```
+
+A walking item stopped going where [`WorldItem.MoveTo()`](ModWorld.md#worlditem-moveto) sent it: it [`MoveState.Arrived`](Paths.md#movestate-arrived), found [`MoveState.NoPath`](Paths.md#movestate-nopath) or got [`MoveState.Stuck`](Paths.md#movestate-stuck), or was stopped. Server only.
+
+<a name="modevents-hoverchanged"></a>
+
+#### HoverChanged
+
+```csharp
+event Action<WorldItem> HoverChanged
+```
+
+The thing under the local player's crosshair (within reach) changed, on their own client: the item now, or an invalid one for nothing (or something that isn't an item, like a tree). Read [`Player.LookingAt`](ModWorld.md#player-lookingat) on [`ModContext.LocalPlayer`](ModContext.md#modcontext-localplayer) for the point and node. Client only.
+
+<a name="modevents-helditemused"></a>
+
+#### HeldItemUsed
+
+```csharp
+event Action<HeldItemUseEvent> HeldItemUsed
+```
+
+A player clicked while carrying a mod item whose [`CarrySpec.Clicks`](ModItems.md#carryspec-clicks) is [`CarryClicks.Mod`](ModItems.md#carryclicks-mod): the left button, or the right ([`HeldItemUseEvent.Alt`](ModEvents.md#helditemuseevent-alt)). Server only.
+
+<a name="modevents-helditemusedlocally"></a>
+
+#### HeldItemUsedLocally
+
+```csharp
+event Action<HeldItemUseEvent> HeldItemUsedLocally
+```
+
+Like [`ModEvents.HeldItemUsed`](ModEvents.md#modevents-helditemused), on the clicking player's own client at once, for instant feedback.
+
+<a name="modevents-seatchanged"></a>
+
+#### SeatChanged
+
+```csharp
+event Action<SeatEvent> SeatChanged
+```
+
+A player got into or out of a seat of a vehicle (the game's or a mod's). Server only.
+
 <a name="chatmessageevent"></a>
 
 ## ChatMessageEvent
@@ -251,6 +311,176 @@ string InteractionId { get; }
 ```
 
 The interaction's id from the item's spec, e.g. "honk".
+
+<a name="interactevent-haspoint"></a>
+
+#### HasPoint
+
+```csharp
+bool HasPoint { get; }
+```
+
+Whether [`InteractEvent.Point`](ModEvents.md#interactevent-point) and [`InteractEvent.Normal`](ModEvents.md#interactevent-normal) are known: where the player's crosshair met the item. The server checks it's on the item and in their reach.
+
+<a name="interactevent-point"></a>
+
+#### Point
+
+```csharp
+Vector3 Point { get; }
+```
+
+Where the player's crosshair met the item, in the world.
+
+<a name="interactevent-normal"></a>
+
+#### Normal
+
+```csharp
+Vector3 Normal { get; }
+```
+
+The surface's normal at [`InteractEvent.Point`](ModEvents.md#interactevent-point).
+
+<a name="interactevent-node"></a>
+
+#### Node
+
+```csharp
+string Node { get; }
+```
+
+The model node the player aimed at: one of the interaction's [`InteractionSpec.Nodes`](ModItems.md#interactionspec-nodes) when it names any, else the name of the mesh part under the crosshair. Null if unknown.
+
+<a name="helditemuseevent"></a>
+
+## HeldItemUseEvent
+
+*class*
+
+A click with a carried item, for [`ModEvents.HeldItemUsed`](ModEvents.md#modevents-helditemused).
+
+### Properties
+
+<a name="helditemuseevent-item"></a>
+
+#### Item
+
+```csharp
+WorldItem Item { get; }
+```
+
+The item in their hands.
+
+<a name="helditemuseevent-player"></a>
+
+#### Player
+
+```csharp
+Player Player { get; }
+```
+
+Who clicked. On a client, the local player.
+
+<a name="helditemuseevent-alt"></a>
+
+#### Alt
+
+```csharp
+bool Alt { get; }
+```
+
+True for the right mouse button.
+
+<a name="helditemuseevent-aimorigin"></a>
+
+#### AimOrigin
+
+```csharp
+Vector3 AimOrigin { get; }
+```
+
+Their eyes as they clicked.
+
+<a name="helditemuseevent-aimdirection"></a>
+
+#### AimDirection
+
+```csharp
+Vector3 AimDirection { get; }
+```
+
+Which way they looked, up and down included.
+
+<a name="helditemuseevent-hit"></a>
+
+#### Hit
+
+```csharp
+WorldHit Hit { get; }
+```
+
+What their crosshair was on, up to 10 m away (seeing through the carried item and the player), with its point, normal and [`WorldHit.Node`](WorldTree.md#worldhit-node).
+
+<a name="seatevent"></a>
+
+## SeatEvent
+
+*struct*
+
+Someone getting into or out of a seat, for [`ModEvents.SeatChanged`](ModEvents.md#modevents-seatchanged).
+
+### Properties
+
+<a name="seatevent-vehicle"></a>
+
+#### Vehicle
+
+```csharp
+WorldItem Vehicle { get; }
+```
+
+The vehicle.
+
+<a name="seatevent-seat"></a>
+
+#### Seat
+
+```csharp
+int Seat { get; }
+```
+
+Which seat: 0 is the driver's, then in the order the spec lists them.
+
+<a name="seatevent-player"></a>
+
+#### Player
+
+```csharp
+Player Player { get; }
+```
+
+Who got in or out.
+
+<a name="seatevent-entered"></a>
+
+#### Entered
+
+```csharp
+bool Entered { get; }
+```
+
+True for getting in, false for getting out.
+
+<a name="seatevent-isdriver"></a>
+
+#### IsDriver
+
+```csharp
+bool IsDriver { get; }
+```
+
+Whether it's the driver's seat.
 
 <a name="treefelledevent"></a>
 

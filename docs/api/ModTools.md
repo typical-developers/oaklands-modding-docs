@@ -42,10 +42,10 @@ How a tool moves when it's used.
 
 | Value | Description |
 | --- | --- |
-| `Swing` | Back, then down through the target, like an axe or hammer. |
-| `Stab` | Straight forward and back, like a spear or screwdriver. |
-| `Raise` | Lifted up and lowered, like a torch or a drink. |
-| `None` | Doesn't move. |
+| <a name="toolswing-swing"></a>`Swing` | Back, then down through the target, like an axe or hammer. |
+| <a name="toolswing-stab"></a>`Stab` | Straight forward and back, like a spear or screwdriver. |
+| <a name="toolswing-raise"></a>`Raise` | Lifted up and lowered, like a torch or a drink. |
+| <a name="toolswing-none"></a>`None` | Doesn't move. |
 
 <a name="toolspec"></a>
 
@@ -264,12 +264,12 @@ What a tool's use struck, for [`ToolUseEvent.HitKind`](ModTools.md#tooluseevent-
 
 | Value | Description |
 | --- | --- |
-| `None` | Nothing within reach. |
-| `Ground` | The ground. |
-| `Item` | An item, log, vehicle or other world object: see [`ToolUseEvent.HitItem`](ModTools.md#tooluseevent-hititem). |
-| `Player` | Another player: see [`ToolUseEvent.HitPlayer`](ModTools.md#tooluseevent-hitplayer). |
-| `Tree` | A standing tree. |
-| `Other` | Anything else, like a building. |
+| <a name="toolhitkind-none"></a>`None` | Nothing within reach. |
+| <a name="toolhitkind-ground"></a>`Ground` | The ground. |
+| <a name="toolhitkind-item"></a>`Item` | An item, log, vehicle or other world object: see [`ToolUseEvent.HitItem`](ModTools.md#tooluseevent-hititem). |
+| <a name="toolhitkind-player"></a>`Player` | Another player: see [`ToolUseEvent.HitPlayer`](ModTools.md#tooluseevent-hitplayer). |
+| <a name="toolhitkind-tree"></a>`Tree` | A standing tree. |
+| <a name="toolhitkind-other"></a>`Other` | Anything else, like a building. |
 
 <a name="tooluseevent"></a>
 

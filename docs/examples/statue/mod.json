@@ -1,0 +1,8 @@
+{
+  "id": "statue",
+  "name": "Carving Statue",
+  "version": "1.0.0",
+  "author": "Oaklands",
+  "description": "Example scripted mod: a stone block you carve with a chisel, each statue its own model made in code.",
+  "api": 1
+}

@@ -110,12 +110,12 @@ The groups items are sorted into.
 
 | Value | Description |
 | --- | --- |
-| `Misc` |  |
-| `Tool` |  |
-| `Wood` |  |
-| `Food` |  |
-| `Medical` |  |
-| `Gear` |  |
+| <a name="inventorycategory-misc"></a>`Misc` |  |
+| <a name="inventorycategory-tool"></a>`Tool` |  |
+| <a name="inventorycategory-wood"></a>`Wood` |  |
+| <a name="inventorycategory-food"></a>`Food` |  |
+| <a name="inventorycategory-medical"></a>`Medical` |  |
+| <a name="inventorycategory-gear"></a>`Gear` |  |
 
 <a name="inventoryspec"></a>
 

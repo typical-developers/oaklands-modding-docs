@@ -527,15 +527,15 @@ Which part of the screen a panel sits in.
 
 | Value | Description |
 | --- | --- |
-| `TopLeft` |  |
-| `Top` |  |
-| `TopRight` |  |
-| `Left` |  |
-| `Center` |  |
-| `Right` |  |
-| `BottomLeft` |  |
-| `Bottom` |  |
-| `BottomRight` |  |
+| <a name="uianchor-topleft"></a>`TopLeft` |  |
+| <a name="uianchor-top"></a>`Top` |  |
+| <a name="uianchor-topright"></a>`TopRight` |  |
+| <a name="uianchor-left"></a>`Left` |  |
+| <a name="uianchor-center"></a>`Center` |  |
+| <a name="uianchor-right"></a>`Right` |  |
+| <a name="uianchor-bottomleft"></a>`BottomLeft` |  |
+| <a name="uianchor-bottom"></a>`Bottom` |  |
+| <a name="uianchor-bottomright"></a>`BottomRight` |  |
 
 <a name="uialign"></a>
 
@@ -547,11 +547,11 @@ How a box lines up its children.
 
 | Value | Description |
 | --- | --- |
-| `Start` |  |
-| `Center` |  |
-| `End` |  |
-| `Stretch` |  |
-| `SpaceBetween` |  |
+| <a name="uialign-start"></a>`Start` |  |
+| <a name="uialign-center"></a>`Center` |  |
+| <a name="uialign-end"></a>`End` |  |
+| <a name="uialign-stretch"></a>`Stretch` |  |
+| <a name="uialign-spacebetween"></a>`SpaceBetween` |  |
 
 <a name="uistyle"></a>
 

@@ -12,9 +12,9 @@ How serious a log line is.
 
 | Value | Description |
 | --- | --- |
-| `Info` |  |
-| `Warning` |  |
-| `Error` |  |
+| <a name="modloglevel-info"></a>`Info` |  |
+| <a name="modloglevel-warning"></a>`Warning` |  |
+| <a name="modloglevel-error"></a>`Error` |  |
 
 <a name="modlog"></a>
 

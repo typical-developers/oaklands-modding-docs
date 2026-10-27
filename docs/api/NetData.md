@@ -8,7 +8,7 @@
 
 *class*
 
-A small bag of named values, sent in network messages: numbers, text, true/false, vectors, rotations and colours.
+A small bag of named values, sent in network messages: numbers, text, true/false, vectors, rotations and colors.
 
 ```csharp
 var data = new NetData().Set("speed", 4.5f).Set("label", "Fast");

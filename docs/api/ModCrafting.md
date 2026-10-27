@@ -1,6 +1,6 @@
 # ModCrafting
 
-[All docs](../index.md) · In this page: [`ModCrafting`](#modcrafting) · [`RecipeCategory`](#recipecategory) · [`RecipeSpec`](#recipespec) · [`CraftedEvent`](#craftedevent)
+[All docs](../index.md) · In this page: [`ModCrafting`](#modcrafting) · [`StationIcon`](#stationicon) · [`StationSpec`](#stationspec) · [`RecipeCategory`](#recipecategory) · [`RecipeSpec`](#recipespec) · [`CraftedEvent`](#craftedevent)
 
 <a name="modcrafting"></a>
 
@@ -22,6 +22,16 @@ string AddRecipe(RecipeSpec spec)
 
 Adds a recipe, or updates this mod's one with the same id. Returns its full id, "modid:recipeid". Add recipes on every peer, so the Crafting tab shows them.
 
+<a name="modcrafting-addstation"></a>
+
+#### AddStation
+
+```csharp
+string AddStation(StationSpec spec)
+```
+
+Adds a kind of crafting station, or updates this mod's one with the same id, e.g. a "Droid Fabricator". Returns its full id, "modid:stationid", for recipes' [`RecipeSpec.Station`](ModCrafting.md#recipespec-station) and items' [`ItemSpec.Station`](ModItems.md#itemspec-station) (where a plain id finds this mod's). JSON files in a mod's `stations` folder are added before its items. Add stations on every peer.
+
 <a name="modcrafting-getstationids"></a>
 
 #### GetStationIds
@@ -31,6 +41,68 @@ List<string> GetStationIds()
 ```
 
 The station kinds recipes can name, e.g. "workbench".
+
+<a name="stationicon"></a>
+
+## StationIcon
+
+*enum*
+
+The picture a station kind gets in the Crafting tab.
+
+| Value | Description |
+| --- | --- |
+| <a name="stationicon-workbench"></a>`Workbench` |  |
+| <a name="stationicon-sawmill"></a>`Sawmill` |  |
+| <a name="stationicon-forge"></a>`Forge` |  |
+
+<a name="stationspec"></a>
+
+## StationSpec
+
+*class*
+
+A kind of crafting station, e.g. a mod's `stations/fabricator.json`: `{ "id": "fabricator", "name": "Droid Fabricator", "icon": "Forge", "range": 4 }`. Make an item one with [`ItemSpec.Station`](ModItems.md#itemspec-station).
+
+### Fields
+
+<a name="stationspec-id"></a>
+
+#### Id
+
+```csharp
+string Id
+```
+
+The id within the mod: lowercase letters, digits and '\_'.
+
+<a name="stationspec-name"></a>
+
+#### Name
+
+```csharp
+string Name
+```
+
+What players see, e.g. "Droid Fabricator".
+
+<a name="stationspec-icon"></a>
+
+#### Icon
+
+```csharp
+StationIcon Icon = StationIcon.Workbench
+```
+
+<a name="stationspec-range"></a>
+
+#### Range
+
+```csharp
+float Range = 4f
+```
+
+How close players have to stand to use it, in metres (0.5 to 20).
 
 <a name="recipecategory"></a>
 
@@ -42,10 +114,10 @@ The groups recipes are listed under.
 
 | Value | Description |
 | --- | --- |
-| `Tools` |  |
-| `Building` |  |
-| `Materials` |  |
-| `Survival` |  |
+| <a name="recipecategory-tools"></a>`Tools` |  |
+| <a name="recipecategory-building"></a>`Building` |  |
+| <a name="recipecategory-materials"></a>`Materials` |  |
+| <a name="recipecategory-survival"></a>`Survival` |  |
 
 <a name="recipespec"></a>
 
@@ -112,7 +184,7 @@ RecipeCategory Category = RecipeCategory.Tools
 string Station
 ```
 
-The station kind it's made at, e.g. "workbench" (see [`ModCrafting.GetStationIds()`](ModCrafting.md#modcrafting-getstationids)); empty for by hand.
+The station kind it's made at, e.g. "workbench" (see [`ModCrafting.GetStationIds()`](ModCrafting.md#modcrafting-getstationids)) or this mod's own from [`ModCrafting.AddStation()`](ModCrafting.md#modcrafting-addstation) (a plain id finds the mod's first); empty for by hand.
 
 <a name="recipespec-output"></a>
 

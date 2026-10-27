@@ -1,6 +1,6 @@
 # ModVehicles
 
-[All docs](../index.md) · In this page: [`ModVehicles`](#modvehicles) · [`VehicleSpec`](#vehiclespec) · [`NitrousSpec`](#nitrousspec) · [`SeatSpec`](#seatspec) · [`WheelSpec`](#wheelspec) · [`EngineSpec`](#enginespec) · [`SuspensionSpec`](#suspensionspec)
+[All docs](../index.md) · In this page: [`ModVehicles`](#modvehicles) · [`VehicleSpec`](#vehiclespec) · [`DoorSpec`](#doorspec) · [`FuelSpec`](#fuelspec) · [`NitrousSpec`](#nitrousspec) · [`SeatSpec`](#seatspec) · [`WheelSpec`](#wheelspec) · [`EngineSpec`](#enginespec) · [`SuspensionSpec`](#suspensionspec)
 
 <a name="modvehicles"></a>
 
@@ -193,6 +193,126 @@ NitrousSpec Nitrous
 ```
 
 A nitrous tank: the driver holds Sprint (Shift) to boost, with flames out of the exhausts and a tank gauge on the HUD. Leave it out for no nitrous.
+
+<a name="vehiclespec-fuel"></a>
+
+#### Fuel
+
+```csharp
+FuelSpec Fuel
+```
+
+A fuel tank: driving under power burns fuel, the dashboard shows a fuel gauge, and once it's empty the engine stops pulling (it still steers, brakes and rolls). Leave it out for a vehicle that never needs fuel, which is the default. There's no way to refuel yet.
+
+<a name="vehiclespec-parkingbrake"></a>
+
+#### ParkingBrake
+
+```csharp
+float ParkingBrake = -1f
+```
+
+Braking torque per wheel, in newton-metres, while nobody drives it, so it doesn't roll away when parked. 0 lets it roll freely, e.g. a trailer; -1 (the default) is 4000, or 0 for a vehicle with no seats.
+
+<a name="vehiclespec-lights"></a>
+
+#### Lights
+
+```csharp
+List<LightSpec> Lights = new()
+```
+
+Lights, e.g. headlights; see [`LightSpec`](ModItems.md#lightspec). At most 8.
+
+<a name="vehiclespec-doors"></a>
+
+#### Doors
+
+```csharp
+List<DoorSpec> Doors = new()
+```
+
+Doors (or hatches) that swing open while someone gets into or out of their seat; see [`DoorSpec`](ModVehicles.md#doorspec). Looking at a seat's door shows that seat's prompt, so a closed cab can still be got into. Works best with `"collider": "Convex"`.
+
+<a name="doorspec"></a>
+
+## DoorSpec
+
+*class*
+
+A door on a vehicle, e.g. `{ "node": "DoorL", "seat": 0, "axis": [0, 1, 0], "openAngle": -70 }`. The node turns about its own origin, so put the origin on the hinge in the model. Scripts can also open and shut it with [`WorldItem.SetDoorOpen()`](ModWorld.md#worlditem-setdooropen).
+
+### Fields
+
+<a name="doorspec-node"></a>
+
+#### Node
+
+```csharp
+string Node
+```
+
+The model node to swing (and everything under it).
+
+<a name="doorspec-seat"></a>
+
+#### Seat
+
+```csharp
+int Seat = -1
+```
+
+Which seat it's for (0 is the driver's), or -1 for none.
+
+<a name="doorspec-axis"></a>
+
+#### Axis
+
+```csharp
+Vector3 Axis = Vector3.up
+```
+
+The hinge's axis, in the node's own space.
+
+<a name="doorspec-openangle"></a>
+
+#### OpenAngle
+
+```csharp
+float OpenAngle = 70f
+```
+
+Degrees it turns to be fully open; the sign picks the way.
+
+<a name="doorspec-swingseconds"></a>
+
+#### SwingSeconds
+
+```csharp
+float SwingSeconds = 0.35f
+```
+
+Seconds to swing fully open or shut.
+
+<a name="fuelspec"></a>
+
+## FuelSpec
+
+*class*
+
+A vehicle's fuel tank, e.g. `{ "range": 40000 }`.
+
+### Fields
+
+<a name="fuelspec-range"></a>
+
+#### Range
+
+```csharp
+float Range = 40000f
+```
+
+How far it drives on a full tank, in metres. Driving at part throttle goes further.
 
 <a name="nitrousspec"></a>
 

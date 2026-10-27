@@ -1,0 +1,8 @@
+{
+  "id": "worker_bot",
+  "name": "Worker Bot",
+  "version": "1.0.0",
+  "author": "Oaklands",
+  "description": "Example scripted mod: a walking helper built in code that follows you and chops trees.",
+  "api": 1
+}

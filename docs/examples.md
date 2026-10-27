@@ -24,6 +24,13 @@ Example vehicle mod: a drivable kart with a horn that counts its honks.
 - [`source/make_kart.py`](examples/go_kart/source/make_kart.py)
 - [`vehicles/kart.json`](examples/go_kart/vehicles/kart.json)
 
+## Carving Statue (`statue`)
+
+Example scripted mod: a stone block you carve with a chisel, each statue its own model made in code.
+
+- [`StatueMod.cs`](examples/statue/StatueMod.cs)
+- [`mod.json`](examples/statue/mod.json)
+
 ## Stone Tools (`stone_tools`)
 
 Example gameplay mod: a craftable pickaxe tool that mines stone, an inventory-only item and recipes.
@@ -54,3 +61,10 @@ Example content mod: one item, no scripts.
 - [`mod.json`](examples/traffic_cone/mod.json)
 - [`models/cone.glb`](examples/traffic_cone/models/cone.glb)
 - [`source/make_cone.py`](examples/traffic_cone/source/make_cone.py)
+
+## Worker Bot (`worker_bot`)
+
+Example scripted mod: a walking helper built in code that follows you and chops trees.
+
+- [`WorkerBotMod.cs`](examples/worker_bot/WorkerBotMod.cs)
+- [`mod.json`](examples/worker_bot/mod.json)

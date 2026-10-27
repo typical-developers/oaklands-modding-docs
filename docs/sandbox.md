@@ -2,7 +2,7 @@
 
 [All docs](index.md)
 
-Every `.cs` file in a mod's folder is compiled together when a world that uses the mod opens, and again whenever one of them changes. Exactly one public class must derive from [`Mod`](api/Mod.md#mod); the game creates it and calls it as things happen. Compile errors, and anything a script throws, show in the console prefixed `[Mods]`.
+Every `.cs` file in a mod's folder is compiled together when a world that uses the mod opens, and again whenever one of them changes. Exactly one public class must derive from [`Mod`](api/Mod.md#mod); the game creates it and calls it as things happen. Compile errors, and anything a script throws, show in the console prefixed `[Mods]`. Everything logged about a mod (its `Log` calls, compile errors, what its scripts throw and problems with its files) also goes to `Logs/Mods/<mod id>.log` in the game's data folder, beside `Worlds` and the game's own `Player.log`, started afresh each session; a host playing their world is told in chat when a mod has an error.
 
 ## What scripts compile against
 
@@ -15,6 +15,12 @@ global using System.Linq;
 global using UnityEngine;
 global using Oaklands.Modding;
 ```
+
+## The language
+
+Scripts are C# 12.0, compiled in Release with nullable annotations off, against the same .NET Standard 2.1 library the game runs on (Unity's Mono), less what the sandbox refuses. `OAKLANDS_MOD` is defined, for `#if`. Features the compiler does by itself work: records, `init`, pattern matching, switch expressions, local functions, tuples, `foreach` over the API's lists. Anything built on threads (`async`/`await`, `Task`) is refused; use [`Timers`](api/ModTimers.md#modtimers) and callbacks instead.
+
+The API's handles, [`Player`](api/ModWorld.md#player), [`WorldItem`](api/ModWorld.md#worlditem), [`WorldTree`](api/WorldTree.md#worldtree) and [`BuildingPart`](api/BuildingPart.md#buildingpart), are `readonly struct`s: small values that name something in the game rather than hold it, so they're cheap to copy and keep in lists or dictionaries, compare equal when they name the same thing, and become invalid (check `IsValid`) when it goes. `default` is the invalid one.
 
 ## What scripts may use
 
@@ -214,7 +220,7 @@ Except these types in them, which could start threads or compile code:
 | `RefSafetyRulesAttribute` | everything |
 | `ScopedRefAttribute` | everything |
 | `TupleElementNamesAttribute` | everything |
-| `RuntimeHelpers` | `InitializeArray`, `GetHashCode` |
+| `RuntimeHelpers` | `InitializeArray`, `GetHashCode`, `EnsureSufficientExecutionStack` |
 
 #### System.Text
 

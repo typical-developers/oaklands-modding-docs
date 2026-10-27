@@ -172,6 +172,26 @@ ModMaterials Materials { get; }
 
 Materials for items' and vehicles' surfaces.
 
+<a name="modcontext-meshes"></a>
+
+#### Meshes
+
+```csharp
+ModMeshes Meshes { get; }
+```
+
+Models made in code.
+
+<a name="modcontext-images"></a>
+
+#### Images
+
+```csharp
+ModImages Images { get; }
+```
+
+Pictures made in code.
+
 <a name="modcontext-world"></a>
 
 #### World
@@ -180,7 +200,17 @@ Materials for items' and vehicles' surfaces.
 ModWorld World { get; }
 ```
 
-Players, items and the ground in the running world.
+Players, items, trees, paths, buildings and the ground in the running world.
+
+<a name="modcontext-worlddata"></a>
+
+#### WorldData
+
+```csharp
+ModWorldData WorldData { get; }
+```
+
+Values this mod keeps for the world, saved with it.
 
 <a name="modcontext-chat"></a>
 
@@ -220,7 +250,7 @@ Messages between this mod on the server and on clients.
 ModEffects Effects { get; }
 ```
 
-Sounds.
+Sounds and lines.
 
 <a name="modcontext-ui"></a>
 

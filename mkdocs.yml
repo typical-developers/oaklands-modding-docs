@@ -44,6 +44,10 @@ nav:
   - "Scripts and the sandbox": sandbox.md
   - "Examples": examples.md
   - "API reference":
+      - "BuildingPart": api/BuildingPart.md
+      - "ImageBuilder": api/ImageBuilder.md
+      - "Line": api/Line.md
+      - "MeshBuilder": api/MeshBuilder.md
       - "Mod": api/Mod.md
       - "ModChat": api/ModChat.md
       - "ModCommands": api/ModCommands.md
@@ -51,11 +55,13 @@ nav:
       - "ModCrafting": api/ModCrafting.md
       - "ModEffects": api/ModEffects.md
       - "ModEvents": api/ModEvents.md
+      - "ModImages": api/ModImages.md
       - "ModInput": api/ModInput.md
       - "ModInventory": api/ModInventory.md
       - "ModItems": api/ModItems.md
       - "ModLog": api/ModLog.md
       - "ModMaterials": api/ModMaterials.md
+      - "ModMeshes": api/ModMeshes.md
       - "ModNetwork": api/ModNetwork.md
       - "ModSettings": api/ModSettings.md
       - "ModTimers": api/ModTimers.md
@@ -64,5 +70,9 @@ nav:
       - "ModUI": api/ModUI.md
       - "ModVehicles": api/ModVehicles.md
       - "ModWorld": api/ModWorld.md
+      - "ModWorldData": api/ModWorldData.md
       - "NetData": api/NetData.md
+      - "Paths": api/Paths.md
       - "Sound": api/Sound.md
+      - "WorldItem.Vehicle": api/WorldItem.Vehicle.md
+      - "WorldTree": api/WorldTree.md

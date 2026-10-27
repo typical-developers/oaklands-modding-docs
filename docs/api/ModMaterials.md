@@ -79,7 +79,7 @@ The id within the mod: lowercase letters, digits and '\_', e.g. "neon".
 string Shader = "lit"
 ```
 
-"lit" (the game's look, lit by the sun and lamps), "unlit" (its own colour, for screens and signs) or "glass" (the game's see-through glass: uses the colour, opacity and smoothness).
+"lit" (the game's look, lit by the sun and lamps), "unlit" (its own color, for screens and signs) or "glass" (the game's see-through glass: uses the color, opacity and smoothness).
 
 <a name="materialspec-base"></a>
 
@@ -119,7 +119,7 @@ float Opacity = 1f
 string Texture
 ```
 
-A .png in the mod's folder, e.g. "textures/paint.png". None gives a plain colour.
+A .png in the mod's folder, e.g. "textures/paint.png". None gives a plain color.
 
 <a name="materialspec-texturestrength"></a>
 
@@ -129,7 +129,7 @@ A .png in the mod's folder, e.g. "textures/paint.png". None gives a plain colour
 float TextureStrength = 1f
 ```
 
-0 shows only the texture's average colour, 1 the whole texture.
+0 shows only the texture's average color, 1 the whole texture.
 
 <a name="materialspec-normalmap"></a>
 

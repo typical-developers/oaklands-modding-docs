@@ -132,6 +132,26 @@ protected ModMaterials Materials { get; }
 
 Shortcut for [`ModContext.Materials`](ModContext.md#modcontext-materials).
 
+<a name="mod-meshes"></a>
+
+#### Meshes
+
+```csharp
+protected ModMeshes Meshes { get; }
+```
+
+Shortcut for [`ModContext.Meshes`](ModContext.md#modcontext-meshes).
+
+<a name="mod-images"></a>
+
+#### Images
+
+```csharp
+protected ModImages Images { get; }
+```
+
+Shortcut for [`ModContext.Images`](ModContext.md#modcontext-images).
+
 <a name="mod-world"></a>
 
 #### World
@@ -141,6 +161,16 @@ protected ModWorld World { get; }
 ```
 
 Shortcut for [`ModContext.World`](ModContext.md#modcontext-world).
+
+<a name="mod-worlddata"></a>
+
+#### WorldData
+
+```csharp
+protected ModWorldData WorldData { get; }
+```
+
+Shortcut for [`ModContext.WorldData`](ModContext.md#modcontext-worlddata).
 
 <a name="mod-chat"></a>
 
