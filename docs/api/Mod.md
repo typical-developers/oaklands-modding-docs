@@ -172,6 +172,16 @@ protected ModWorldData WorldData { get; }
 
 Shortcut for [`ModContext.WorldData`](ModContext.md#modcontext-worlddata).
 
+<a name="mod-weather"></a>
+
+#### Weather
+
+```csharp
+protected ModWeather Weather { get; }
+```
+
+Shortcut for [`ModContext.Weather`](ModContext.md#modcontext-weather).
+
 <a name="mod-chat"></a>
 
 #### Chat

@@ -69,6 +69,7 @@ nav:
       - "ModTrees": api/ModTrees.md
       - "ModUI": api/ModUI.md
       - "ModVehicles": api/ModVehicles.md
+      - "ModWeather": api/ModWeather.md
       - "ModWorld": api/ModWorld.md
       - "ModWorldData": api/ModWorldData.md
       - "NetData": api/NetData.md

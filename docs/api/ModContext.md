@@ -212,6 +212,16 @@ ModWorldData WorldData { get; }
 
 Values this mod keeps for the world, saved with it.
 
+<a name="modcontext-weather"></a>
+
+#### Weather
+
+```csharp
+ModWeather Weather { get; }
+```
+
+Showers, storms, fog and lightning.
+
 <a name="modcontext-chat"></a>
 
 #### Chat

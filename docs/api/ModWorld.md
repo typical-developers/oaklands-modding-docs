@@ -338,6 +338,36 @@ string HeldTool { get; }
 
 The id of the tool in their hand from the hotbar, e.g. "axe" or "mining:pickaxe", or null for none. Readable on the server for anyone and on a client for the local player.
 
+<a name="player-flying"></a>
+
+#### Flying
+
+```csharp
+bool Flying { get; set; }
+```
+
+Whether they fly: no gravity, moving the way they look, jump to rise and sprint to sink. Always true while [`Player.Noclip`](ModWorld.md#player-noclip) is. Readable anywhere; setting it is server only and does nothing elsewhere.
+
+<a name="player-noclip"></a>
+
+#### Noclip
+
+```csharp
+bool Noclip { get; set; }
+```
+
+Whether they fly through everything, walls and ground included, colliding with nothing. Turning it off leaves them flying if [`Player.Flying`](ModWorld.md#player-flying) was on before. Readable anywhere; setting it is server only and does nothing elsewhere.
+
+<a name="player-flyspeed"></a>
+
+#### FlySpeed
+
+```csharp
+float FlySpeed { get; set; }
+```
+
+How fast they fly, in meters a second (15 to start with), kept between 1 and 200. Readable anywhere; setting it is server only and does nothing elsewhere.
+
 ### Methods
 
 <a name="player-getlookhit"></a>

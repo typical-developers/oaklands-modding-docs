@@ -175,6 +175,12 @@ Scripts reach the game through the `Oaklands.Modding` namespace, which every scr
 - [`EngineSpec`](api/ModVehicles.md#enginespec): How a vehicle drives.
 - [`SuspensionSpec`](api/ModVehicles.md#suspensionspec): How a vehicle's wheels spring.
 
+### [ModWeather](api/ModWeather.md)
+
+- [`WeatherStage`](api/ModWeather.md#weatherstage): How far along a shower or storm is.
+- [`WeatherInfo`](api/ModWeather.md#weatherinfo): One shower, storm or fog bank going on in the world.
+- [`ModWeather`](api/ModWeather.md#modweather): The world's weather: showers, rain, thunderstorms and fog that form, drift with the wind and die away, the same for every player.
+
 ### [ModWorld](api/ModWorld.md)
 
 - [`ModWorld`](api/ModWorld.md#modworld): Players and items in the world.

@@ -10,7 +10,7 @@
 
 One part built with the hammer: a blueprint until it's filled with material (logs dragged into it, say), then solid. From [`ModWorld.FindBuildingParts()`](ModWorld.md#modworld-findbuildingparts); the values are as they were when it was found, so find it again (or [`ModWorld.GetBuildingPart()`](ModWorld.md#modworld-getbuildingpart)) for fresh ones. Server only.
 
-Building is limited by claimed zones, so filling and placing take the id of the player the work is done for ([`Player.Id`](ModWorld.md#player-id), e.g. whoever owns a worker droid), and fail where they couldn't build themselves.
+Building is limited by players' zones, so filling and placing take the id of the player the work is done for ([`Player.Id`](ModWorld.md#player-id), e.g. whoever owns a worker droid), and fail where they couldn't build themselves.
 
 ### Properties
 
